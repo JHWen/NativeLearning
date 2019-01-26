@@ -7,18 +7,14 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 
 import cn.edu.bit.codesky.nativelearning.R;
 
 /**
- * 自定义虹软人脸识别框/人脸抓拍框/人脸追踪框
- * Created by HDL on 2018/7/31.
+ * 自定义人脸追踪框
  */
 public class FaceView extends View {
     private Rect rect;
-    private int screenWidth;
-    private int screenHeight;
 
     private static final String TAG = FaceView.class.getName();
 
@@ -32,9 +28,6 @@ public class FaceView extends View {
 
     public FaceView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        screenWidth = wm.getDefaultDisplay().getWidth();
-        screenHeight = wm.getDefaultDisplay().getHeight();
         initPaint(context);
     }
 
@@ -53,8 +46,6 @@ public class FaceView extends View {
      * @param rect1
      */
     public void drawFaceRect(Rect rect1) {
-        Log.d(TAG, "drawFaceRect：" + screenWidth);
-        Log.d(TAG, "drawFaceRect：" + screenHeight);
         this.rect = new Rect();
         float ratio = 1.5f;
         this.rect.left = (int) (rect1.top * ratio);
